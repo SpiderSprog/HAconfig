@@ -1,0 +1,15 @@
+alias: PIR Bedroom On
+trigger:
+   platform: state
+   entity_id: binary_sensor.sensor
+   to: 'on'
+condition:
+  - condition: state
+    entity_id: input_select.house_mode
+    state: 'Home'
+  - condition: state
+    entity_id: input_boolean.motion_sensors
+    state: 'on' 
+action:
+   service: homeassistant.turn_on
+   entity_id: light.bedroom

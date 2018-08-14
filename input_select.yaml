@@ -1,0 +1,27 @@
+  house_mode:
+    name: House Mode
+    options:
+     - Home
+     - Away
+     - Sleep
+     - Holiday
+    initial: Home
+    #icon: mdi:panda
+  living_room_mode:
+    name: Living Room Mode
+    options:
+      - Watching Media
+      - Idle
+      - Chill
+  just_for_fun:
+    name: Just for Fun
+    options:
+      - Red Alert
+      - Stand Down
+      - Intruder Aelrt
+    initial: Stand Down
+                 
+  kodi_results:
+    name: Kodi API results
+    options:
+     - Nothing to do

@@ -1,0 +1,13 @@
+sequence:
+
+      - service: script.turn_off
+        data:
+         entity_id: script.timer_lr
+      - service: light.turn_on
+        entity_id: light.living_room
+      #- delay: 00:00:10
+      #- service: light.turn_off  
+      #  entity_id: light.living_room
+      - service: script.turn_on
+        data:
+         entity_id: script.timer_lr

@@ -1,0 +1,16 @@
+alias: "Kitchen ChromeCast Stopped"
+trigger:
+  - platform: state
+    entity_id: media_player.kitchen_speaker
+    to: 'off'
+    for:
+      minutes: 5
+  - platform: state
+    entity_id: media_player.all
+    to: 'off'
+    for:
+      minutes: 5
+action:
+
+   - service: switch.turn_off
+     entity_id: switch.kitchen_amp

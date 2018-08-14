@@ -1,0 +1,13 @@
+alias: "Kitchen ChromeCast Playing"
+trigger:
+  - platform: state
+    entity_id: media_player.kitchen_speaker
+    to: 'playing'
+  - platform: state
+    entity_id: media_player.all
+    to: 'playing'
+    
+action:
+
+   - service: switch.turn_on
+     entity_id: switch.kitchen_amp

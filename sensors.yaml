@@ -1,0 +1,245 @@
+  - platform: yr
+  
+  - platform: time_date
+    display_options:
+      - 'time'
+      
+  - platform: template
+    sensors:
+      wakeup_alarm_time:
+        friendly_name: 'Alarm time'
+        value_template: '{% if states.input_number.wakeup_hour.state|length == 3 %}0{% endif %}{{ states.input_number.wakeup_hour.state | int }}:{% if states.input_number.wakeup_minutes.state|length == 3 %}0{% endif %}{{ states.input_number.wakeup_minutes.state | int }}'
+
+  - platform: template
+    sensors:
+      wakeup_start_time_lights:
+        friendly_name: 'Fade-in start time'
+        value_template: >
+          {% if states.sensor.wakeup_alarm_time and states.input_number.wakeup_duration %}
+          {% set alarmtime = states.sensor.wakeup_alarm_time.state %}
+          {% set alarm_hour = alarmtime.split(":")[0] | int %}
+          {% set alarm_min = alarmtime.split(":")[1] | int %}
+          {% set light_dur = states.input_number.wakeup_duration.state | int %}
+          {% set alarm_min_light = alarm_min - light_dur %}
+          {% if alarm_min_light  < 0 %}
+          {% set alarm_min_light = alarm_min_light + 60 %}
+          {% set alarm_hour_light = alarm_hour - 1 %}
+          {% if alarm_hour_light < 0 %}{% set alarm_hour_light = 23 %}{% endif %}
+          {% if alarm_hour_light < 10 %}0{% endif %}{{ alarm_hour_light}}:{% if alarm_min_light < 10 %}0{% endif %}{{ alarm_min_light }}
+          {% else %}
+          {% if alarm_hour < 10 %}0{% endif %}{{ alarm_hour }}:{% if alarm_min_light < 10 %}0{% endif %}{{ alarm_min_light }}
+          {% endif %}
+          {% endif %}
+          
+  - platform: template
+    sensors:
+      wakeup_fadein_duration:
+        friendly_name: 'Fade-in duration'
+        value_template: '{{ states.input_number.wakeup_duration.state | int }}'
+        unit_of_measurement: 'min'
+          
+  - platform: template
+    sensors:
+      gym_days_chris:
+        friendly_name: 'Chris Gym days'
+        value_template: '{{ states.input_number.gym_days_chris | int }}'
+        unit_of_measurement: 'day'        
+        
+#breakout hall sensors from hue multi sensor      
+  - platform: hue
+  
+  - platform: template
+    sensors:
+  
+      hall_temperature:
+        friendly_name: 'Hall temperature'
+        value_template: '{{states.sensor.hue_motion_sensor_motion_1.attributes.temperature}}'
+        unit_of_measurement: °C
+ 
+      hall_light_level:
+        friendly_name: 'Hall Lux'
+        value_template: '{{states.sensor.hue_motion_sensor_motion_1.attributes.lux}}'
+        unit_of_measurement: lux
+#breakout device tracker sensors
+
+      chris_battery:
+        friendly_name: 'Chris Phone Battery'
+        value_template: '{{states.device_tracker.chris_chris.attributes.battery}}'
+        unit_of_measurement: percent
+        
+#media player sensor tempalates for use in groups
+  - platform: template
+    sensors:
+      bedroom_speaker_state:
+        value_template: '{{ states("media_player.bedroom_speaker") }}'
+        friendly_name: 'Bedroom Speaker'
+        icon_template: >
+          {% if is_state('media_player.bedroom_speaker', 'off') %}
+            mdi:cast
+          {% elif is_state('media_player.bedroom_speaker', 'playing') %}
+            mdi:music
+          {% else %}
+            mdi:cast
+          {% endif %}
+  - platform: template
+    sensors:
+      bedroom_home_mini_state:
+        value_template: '{{ states("media_player.bedroom_home_mini") }}'
+        friendly_name: 'Bedroom Home Mini'
+        icon_template: >
+          {% if is_state('media_player.bedroom_home_mini', 'off') %}
+            mdi:cast
+          {% elif is_state('media_player.bedroom_home_mini', 'playing') %}
+            mdi:music
+          {% else %}
+            mdi:cast
+          {% endif %}
+          
+  - platform: template
+    sensors:
+      kodi_state:
+        value_template: '{{ states("media_player.kodi") }}'
+        friendly_name: 'Kodi'
+        icon_template: >
+          {% if is_state('media_player.kodi', 'off') %}
+            mdi:kodi
+          {% elif is_state('media_player.kodi', 'playing') %}
+            mdi:kodi
+          {% else %}
+            mdi:kodi
+          {% endif %}
+          
+  - platform: template
+    sensors:
+      chromecast_vid_state:
+        value_template: '{{ states("media_player.living_room_tv") }}'
+        friendly_name: 'TV Chromecast'
+        icon_template: >
+          {% if is_state('media_player.living_room_tv', 'off') %}
+            mdi:cast
+          {% elif is_state('media_player.living_room_tv', 'playing') %}
+            mdi:filmstrip
+          {% else %}
+            mdi:cast
+          {% endif %}
+
+  - platform: template
+    sensors:
+      kitchen_speaker_state:
+        value_template: '{{ states("media_player.kitchen_speaker") }}'
+        friendly_name: 'Kitchen Speaker'
+        icon_template: >
+          {% if is_state('media_player.kitchen_speaker', 'off') %}
+            mdi:cast
+          {% elif is_state('media_player.kitchen_speaker', 'playing') %}
+            mdi:music
+          {% else %}
+            mdi:cast
+          {% endif %}
+          
+  - platform: template
+    sensors:
+      living_room_speaker_state:
+        value_template: '{{ states("media_player.living_room_speaker") }}'
+        friendly_name: 'Living Room Speaker'
+        icon_template: >
+          {% if is_state('media_player.living_room_speaker', 'off') %}
+            mdi:cast
+          {% elif is_state('media_player.living_room_speaker', 'playing') %}
+            mdi:music
+          {% else %}
+            mdi:cast
+          {% endif %}
+
+  - platform: bitcoin
+    display_options:
+      - exchangerate
+      - trade_volume_btc
+
+  - platform: blockchain
+    addresses:
+      - '16zt2R8Cx9Vq2yNunL7Qc9k9LhHcDF8tPo'
+      - '1HhkBuYhCvk7scC2QwLLnREbwCHXeu2fmp'
+   
+   #add more pairs
+  - platform: coinmarketcap
+  
+ # - platform: rest
+ #   name: Wall Panel
+ #   json_attributes:
+ #     - batteryLevel
+ #     - kioskMode
+ #     - screenBrightness
+ #     - motionDetectorState
+ #     - maintenanceMode
+ #     - appFreeMemory
+ #     - appUsedMemory
+ #     - totalFreeMemory
+ #     - totalUsedMemory
+ #     - hostname4
+ #     - ip4
+ #     - mac
+ #     - locationLatitude
+ #     - locationLongitude
+ #     - locationAltitude
+ #     - startUrl
+ #     - currentPage
+ #   resource: !secret TF201_rest
+ #   value_template: '{{ value_json.isScreenOn }}'
+    
+
+  - platform: fitbit
+    clock_format: 24H
+    monitored_resources:
+        - "activities/activityCalories"
+        - "activities/calories"
+        - "activities/caloriesBMR"
+        - "activities/distance"
+        - "activities/heart"
+        - "activities/steps"
+        - "activities/tracker/calories"
+        - "activities/tracker/distance"
+        - "activities/tracker/steps"
+        - "body/bmi"
+        - "body/fat"
+        - "body/weight"
+        - "devices/battery"
+
+  - platform: qnap
+    host: 192.168.1.12
+    username: admin
+    password: !secret nas_pass
+    monitored_conditions:
+      - status
+      - cpu_usage
+      - memory_percent_used
+      - memory_free
+      - memory_used
+      - volume_percentage_used
+      - drive_smart_status
+      - network_tx
+      - network_rx
+      - network_link_status
+      - volume_size_free
+      - volume_size_used
+      - volume_percentage_used
+
+  - platform: rfxtrx
+    automatic_add: True
+    
+  - platform: template
+    sensors:
+      hyperion_colour:
+        friendly_name: "Hyperion Colour"
+        unit_of_measurement: 'rgb'
+        value_template: "{{ states.light.hyperion.attributes.rgb_color }}"
+        
+  - platform: template
+    sensors:
+      hyperion_colour_str:
+        friendly_name: "Hyperion Colour str"
+        unit_of_measurement: ''
+        value_template: "{{ (states.light.hyperion.attributes.rgb_color) }}"   
+
+        
+        

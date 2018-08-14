@@ -1,0 +1,32 @@
+alias: "Media Stops Lights on"
+trigger:
+  - platform: state
+    entity_id: input_select.living_room_mode
+    to: 'Idle'
+    
+action:
+   - service: light.turn_off
+     data:
+       entity_id: light.salt_lamp
+   - service: light.turn_on
+     data:
+       entity_id: light.living_room
+       brightness: 155
+       rgb_color: [255,153,102]
+   - service: light.turn_off
+     data:
+      entity_id: light.hyperion
+   - service: remote.send_command
+     data:
+      entity_id: remote.harmonyhub
+      command:
+       - PowerOff
+      device: 36148984
+      delay_secs: 0.6
+   - service: remote.send_command
+     data:
+      entity_id: remote.harmonyhub
+      command:
+      - PowerOff
+      device: 38592245
+      delay_secs: 0.6

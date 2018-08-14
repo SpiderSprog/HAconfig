@@ -1,0 +1,235 @@
+media_player.bedroom_speaker:
+  config_entry_id: 3260593b65e14e1eb83087040db50287
+  name:
+  platform: cast
+  unique_id: 93b5921c-9344-6fcb-aec2-a1bcf44171aa
+media_player.kitchen_speaker:
+  config_entry_id: 3260593b65e14e1eb83087040db50287
+  name:
+  platform: cast
+  unique_id: c47696bc-ccf0-ed5e-478f-1cc19b26a8e6
+media_player.living_room_speaker:
+  config_entry_id: 3260593b65e14e1eb83087040db50287
+  name:
+  platform: cast
+  unique_id: 076dcfa0-fd97-c111-3a9d-6087d24cff75
+media_player.all:
+  config_entry_id: 3260593b65e14e1eb83087040db50287
+  name:
+  platform: cast
+  unique_id: 4befae83-1f0e-4837-beda-11c9c73a560d
+media_player.living_room_tv:
+  config_entry_id: 3260593b65e14e1eb83087040db50287
+  name:
+  platform: cast
+  unique_id: de6b4fda-e1ee-7579-eb3a-c479600fd040
+media_player.bedroom_home_mini:
+  config_entry_id: 3260593b65e14e1eb83087040db50287
+  name:
+  platform: cast
+  unique_id: 1b2e837d-8e43-51a4-6c2e-dd5a8869b424
+light.living_room:
+  config_entry_id: 86cf8651042f4a1da3273b64d7523d5c
+  name:
+  platform: hue
+  unique_id: 00:17:88:01:02:46:cf:38-0b
+light.bedroom:
+  config_entry_id: 86cf8651042f4a1da3273b64d7523d5c
+  name:
+  platform: hue
+  unique_id: 00:17:88:01:02:48:34:74-0b
+light.hall_2:
+  config_entry_id: 86cf8651042f4a1da3273b64d7523d5c
+  name:
+  platform: hue
+  unique_id: 00:17:88:01:02:49:8f:0c-0b
+sensor.alarm_type:
+  config_entry_id:
+  name:
+  platform: zwave
+  unique_id: 3-72057594094305281
+sensor.alarm_level:
+  config_entry_id:
+  name:
+  platform: zwave
+  unique_id: 3-72057594094305297
+sensor.luminance:
+  config_entry_id:
+  name: Bedroom Lux
+  platform: zwave
+  unique_id: 3-72057594093256754
+binary_sensor.sensor:
+  config_entry_id:
+  name: Bedroom Sensor
+  platform: zwave
+  unique_id: 3-72057594093240320
+sensor.alarm_type_2:
+  config_entry_id:
+  name:
+  platform: zwave
+  unique_id: 6-72057594144636929
+sensor.alarm_level_2:
+  config_entry_id:
+  name:
+  platform: zwave
+  unique_id: 6-72057594144636945
+binary_sensor.sensor_2:
+  config_entry_id:
+  name: Living Room Sensor
+  platform: zwave
+  unique_id: 6-72057594143571968
+sensor.aeotec_zw074_multisensor_gen5_temperature:
+  config_entry_id:
+  name: Bedroom Temperature
+  platform: zwave
+  unique_id: 3-72057594093256722
+sensor.aeotec_zw074_multisensor_gen5_relative_humidity:
+  config_entry_id:
+  name: Bedroom Humidity
+  platform: zwave
+  unique_id: 3-72057594093256786
+sensor.aeotec_zw074_multisensor_gen5_sourcenodeid:
+  config_entry_id:
+  name:
+  platform: zwave
+  unique_id: 3-72057594094305313
+sensor.aeotec_zw074_multisensor_gen5_burglar:
+  config_entry_id:
+  name:
+  platform: zwave
+  unique_id: 3-72057594094305441
+sensor.aeotec_zw074_multisensor_gen5_temperature_2:
+  config_entry_id:
+  name: Living Room Temperature
+  platform: zwave
+  unique_id: 6-72057594143588370
+sensor.aeotec_zw074_multisensor_gen5_luminance:
+  config_entry_id:
+  name: Living Room Lux
+  platform: zwave
+  unique_id: 6-72057594143588402
+sensor.aeotec_zw074_multisensor_gen5_relative_humidity_2:
+  config_entry_id:
+  name: Living Room Humidity
+  platform: zwave
+  unique_id: 6-72057594143588434
+sensor.aeotec_zw074_multisensor_gen5_sourcenodeid_2:
+  config_entry_id:
+  name:
+  platform: zwave
+  unique_id: 6-72057594144636961
+sensor.aeotec_zw074_multisensor_gen5_burglar_2:
+  config_entry_id:
+  name:
+  platform: zwave
+  unique_id: 6-72057594144637089
+binary_sensor.cube_158d0001108283:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: cube158d0001108283
+sensor.illumination_7811dcdeb2d6:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: illumination7811dcdeb2d6
+light.gateway_light_7811dcdeb2d6:
+  config_entry_id:
+  name: Gateway Light
+  platform: xiaomi_aqara
+  unique_id: rgb7811dcdeb2d6
+binary_sensor.switch_158d000201afea:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d000201afea
+binary_sensor.motion_sensor_158d0001d525ab:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d0001d525ab
+zwave.aeotec_dsa02203_zstick_s2:
+  config_entry_id:
+  name:
+  platform: zwave
+  unique_id: node-1
+zwave.aeotec_zw074_multisensor_gen5:
+  config_entry_id:
+  name:
+  platform: zwave
+  unique_id: node-3
+zwave.aeotec_zw074_multisensor_gen5_2:
+  config_entry_id:
+  name:
+  platform: zwave
+  unique_id: node-6
+light.hue_ambiance_spot_1:
+  config_entry_id: 86cf8651042f4a1da3273b64d7523d5c
+  name:
+  platform: hue
+  unique_id: 00:17:88:01:02:f0:a4:c5-0b
+light.hue_ambiance_spot_2:
+  config_entry_id: 86cf8651042f4a1da3273b64d7523d5c
+  name:
+  platform: hue
+  unique_id: 00:17:88:01:03:ae:3c:4c-0b
+light.hue_ambiance_spot_3:
+  config_entry_id: 86cf8651042f4a1da3273b64d7523d5c
+  name:
+  platform: hue
+  unique_id: 00:17:88:01:02:f0:b3:59-0b
+light.hue_ambiance_spot_1_2:
+  config_entry_id: 86cf8651042f4a1da3273b64d7523d5c
+  name:
+  platform: hue
+  unique_id: 00:17:88:01:02:f0:a9:f6-0b
+light.hue_ambiance_spot_2_2:
+  config_entry_id: 86cf8651042f4a1da3273b64d7523d5c
+  name:
+  platform: hue
+  unique_id: 00:17:88:01:02:f0:a9:b2-0b
+sensor.aeotec_zw074_multisensor_gen5_tank_capacity:
+  config_entry_id:
+  name:
+  platform: zwave
+  unique_id: 3-72057594093257010
+sensor.aeotec_zw074_multisensor_gen5_tide_level:
+  config_entry_id:
+  name:
+  platform: zwave
+  unique_id: 3-72057594093256914
+sensor.aeotec_zw074_multisensor_gen5_angle_position:
+  config_entry_id:
+  name:
+  platform: zwave
+  unique_id: 3-72057594093257042
+sensor.aeotec_zw074_multisensor_gen5_direction:
+  config_entry_id:
+  name:
+  platform: zwave
+  unique_id: 3-72057594093256818
+sensor.aeotec_zw074_multisensor_gen5_power:
+  config_entry_id:
+  name:
+  platform: zwave
+  unique_id: 3-72057594093256770
+sensor.aeotec_zw074_multisensor_gen5_dew_point:
+  config_entry_id:
+  name:
+  platform: zwave
+  unique_id: 3-72057594093256882
+sensor.aeotec_zw074_multisensor_gen5_barometric_pressure:
+  config_entry_id:
+  name:
+  platform: zwave
+  unique_id: 3-72057594093256850
+sensor.aeotec_zw074_multisensor_gen5_co2_level:
+  config_entry_id:
+  name:
+  platform: zwave
+  unique_id: 3-72057594093256978
+sensor.aeotec_zw074_multisensor_gen5_general:
+  config_entry_id:
+  name:
+  platform: zwave
+  unique_id: 3-72057594093256738

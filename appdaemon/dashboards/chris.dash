@@ -1,0 +1,18 @@
+#
+# Main arguments, all optional
+#
+title: Chris
+widget_dimensions: [120, 120]
+widget_margins: [5, 5]
+columns: 8
+
+label:
+    widget_type: label
+    text: Hi Chris!
+    
+layout:
+    - label(10x1)
+    - light.hall, light.living_room, sensor.wakeup_alarm_time
+    - sensor.aeotec_zw074_multisensor_gen5_temperature_2
+    #- weather.weather, 
+    - clock.clock

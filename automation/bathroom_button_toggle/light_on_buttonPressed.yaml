@@ -1,0 +1,16 @@
+  alias: "MiButton Press EVent"
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: click
+    event_data:
+      entity_id: binary_sensor.switch_158d000201afea
+      click_type: single
+  action:
+    service: light.toggle
+    data:
+      entity_id:
+        - light.bathroom
+        #- light.hue_ambiance_spot_1_2
+        #- light.hue_ambiance_spot_2_2
+    

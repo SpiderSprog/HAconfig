@@ -1,0 +1,78 @@
+alias: 'Home SCenario Lights'
+hide_entity: True
+trigger:
+  platform: state
+  entity_id: input_select.house_mode
+  to: "Home"
+action:
+
+
+      
+#set lights for home sceario
+  - service: light.turn_on
+    data:
+      entity_id: light.hall
+      brightness: 255
+  - service: light.turn_on
+    data:
+      entity_id: light.living_room
+      brightness: 155
+      rgb_color: [255,153,102]
+  - service: light.turn_on
+    data:
+      entity_id: light.bedroom
+      brightness: 155
+  - service: hue.hue_activate_scene
+    data: 
+       group_name: "Kitchen"
+       scene_name: "Relax"
+  - service: hue.hue_activate_scene
+    data: 
+       group_name: "Bathroom"
+       scene_name: "Relax"
+       
+#flash gateway -myabe play sound
+  - service: xiaomi_aqara.stop_ringtone
+    data:
+     gw_mac: 7811dcdeb2d6
+     
+
+  - service: light.turn_on
+    data:
+      entity_id: light.gateway_light_7811dcdeb2d6
+      color_name: "green"  
+      
+  - delay: 
+     seconds: 1
+     
+  - service: light.turn_off
+    data:
+      entity_id: light.gateway_light_7811dcdeb2d6
+      
+  - service: light.turn_on
+    data:
+      entity_id: light.gateway_light_7811dcdeb2d6
+      color_name: "green"  
+      
+  - delay: 
+     seconds: 1
+     
+  - service: light.turn_off
+    data:
+      entity_id: light.gateway_light_7811dcdeb2d6
+      
+  - service: light.turn_on
+    data:
+      entity_id: light.gateway_light_7811dcdeb2d6
+      color_name: "green"  
+      
+  - delay: 
+     seconds: 1
+     
+  - service: light.turn_off
+    data:
+      entity_id: light.gateway_light_7811dcdeb2d6
+      
+  - service: light.turn_off
+    data:
+      entity_id: group.all_lights

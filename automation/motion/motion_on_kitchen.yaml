@@ -1,0 +1,24 @@
+alias: PIR Kitchen On
+trigger:
+   platform: state
+   entity_id: binary_sensor.motion_sensor_158d0001d525ab
+   to: 'on'
+condition:
+  - condition: state
+    entity_id: input_boolean.motion_sensors
+    state: 'on' 
+  - condition: state
+    entity_id: input_select.house_mode
+    state: 'Home'
+
+ 
+action:
+   service: light.turn_on
+   data:
+     entity_id: 
+        - light.kitchen
+        #- light.hue_ambiance_spot_1 #make group?
+        #- light.hue_ambiance_spot_2
+        #- light.hue_ambiance_spot_3
+     brightness: 155
+     rgb_color: [255,153,102]

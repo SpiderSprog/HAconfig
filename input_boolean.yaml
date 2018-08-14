@@ -1,0 +1,20 @@
+
+  wakeup:
+    name: 'Enable wakeup light'
+    icon: mdi:power
+    initial: on
+
+  wakeup_weekends:
+    name: 'Wakeup weekends'
+    icon: mdi:power
+    initial: off
+
+  motion_sensors:
+    name: 'Motion Sensors'
+    icon: mdi:power
+    initial: on
+    
+  ha_uptime:
+    name: 'Uptime'
+    icon: mdi:power
+    initial: on

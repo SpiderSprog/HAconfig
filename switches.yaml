@@ -1,0 +1,63 @@
+  - platform: rfxtrx
+    automatic_add: True
+    devices:
+       0b110000005121020b000050:
+        name: "2 Gang Left"
+        fire_event: True
+       0b110001005121020c000050:
+        name: "2 Gang Right"
+        fire_event: True
+       "0710010041040060":
+        name: "Salt Lamp Switch"
+        fire_event: True
+        #hidden: true
+       "0710010041010150":
+        name: "Bedside Lamps Switch"
+        fire_event: True
+        #hidden: true
+       "0710010141030150":
+        name: "Kitchen Amp"
+        fire_event: True
+        #icon: mdi:speaker-wireless
+       "0710010041020150":
+        name: "Bedroom Amp"
+        fire_event: True
+        #icon: mdi:speaker-wireless
+        
+  - platform: mqtt
+    name: "BedroomSwitch"
+    command_topic: "cmnd/bedroomswitch/power"
+    state_topic: "stat/bedroomswitch/POWER"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+  ###### wall panel stuff, no longer usign######################
+  #- platform: command_line
+  #  switches:
+  #    wall_panel:
+  #      command_on: !secret wall_panel_on
+  #      command_off: !secret wall_panel_off
+  #      command_state: !secret wall_panel_state
+  #      value_template: '{{ value == "on" }}'
+  #      friendly_name: Wall Panel
+  #      
+  #- platform: command_line        
+  #  switches:
+  #    wall_panel_welcome_chris:
+  #      command_on: !secret wall_panel_welcome_chris
+  #      friendly_name: Wall Panel Welcome Chris
+  #      
+  #
+  #- platform: command_line        
+  #  switches:
+  #    wall_panel_chris_dash:
+  #      command_on: !secret wall_panel_dash_chris
+  #      friendly_name: Wall Panel Chris Dash
+  #
+  #- platform: command_line
+  #  switches:
+  #    wall_panel_dash_scan:
+  #      value_template: "false"
+  #      command_on: !secret wall_panel_dash_scan
+  #      friendly_name: Wall Panel Dash scan

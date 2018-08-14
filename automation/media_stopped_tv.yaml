@@ -1,0 +1,14 @@
+alias: "TV Media player Stopped"
+trigger:
+  - platform: state
+    entity_id: media_player.kodi
+    to: 'idle'
+  - platform: state
+    entity_id: media_player.living_room_tv
+    to: 'off'
+    
+action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.living_room_mode
+        option: "Idle"

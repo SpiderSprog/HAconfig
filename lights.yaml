@@ -1,0 +1,61 @@
+- platform: hue
+  host: 192.168.1.15
+  
+  
+- platform: template
+  lights:
+    salt_lamp:
+      friendly_name: "Salt Lamp"
+      turn_on:
+        service: switch.turn_on
+        entity_id: switch.salt_lamp_switch
+      turn_off:
+        service: switch.turn_off
+        entity_id: switch.salt_lamp_switch
+
+- platform: template
+  lights:
+    bedside_lamps:
+      friendly_name: "Bedside Lamps"
+      turn_on:
+        service: switch.turn_on
+        entity_id: switch.bedside_lamps_switch
+      turn_off:
+        service: switch.turn_off
+        entity_id: switch.bedside_lamps_switch
+
+- platform: rfxtrx
+    #automatic_add: True
+  devices:
+       "0710010041010150":
+        name: "Bedside Lights"
+        #fire_event: True
+        
+
+- platform: flux_led
+  automatic_add: True
+
+- platform: template
+  lights:
+    picture_lights:
+      friendly_name: "Picture Lights"
+      turn_on:
+        - service: remote.send_command
+          data:
+           entity_id: remote.harmonyhub
+           command:
+            - PowerOn
+           device: 38592245
+           delay_secs: 0.6
+      turn_off:
+        - service: remote.send_command
+          data:
+           entity_id: remote.harmonyhub
+           command:
+            - PowerOff
+           device: 38592245
+           delay_secs: 0.6
+           
+- platform: hyperion
+  host: 192.168.1.21
+  name: "hyperion"

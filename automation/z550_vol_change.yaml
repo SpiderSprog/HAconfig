@@ -1,0 +1,41 @@
+  alias: "Volume Slider z550 changed"
+  initial_state: 'on'
+  #condition:
+  #  - condition: state
+  #    entity_id: media_player.living_room_speaker
+  #    state: 'playing'
+  trigger:
+    platform: state
+    entity_id: input_number.lr_amp_vol
+  action:
+ #   - service: media_player.volume_set
+ #     data_template:
+ #       entity_id: media_player.tv
+ #       volume_level: >
+ #             {% set state = (states.media_player.tv.attributes.volume_level + (trigger.event.data.action_value|int)/90)|round(2) -%}
+ #             {%-  if state > 1 -%}
+ #                {%- set state  = 1 -%}
+ #             {%-  elif state < 0 -%}
+ #                {%- set state  = 0 -%}
+ #             {%- endif %}
+ #             {{ state }}
+    - service: logbook.log
+      data_template:
+        name: "Volume changed: "
+        message: "{{states.input_number.lr_amp_vol.state}}"
+        
+    - service: notify.pushbullet
+      data_template:
+        target: device/OnePlus3
+        title: vol prev state PushBullet
+        message: "{{states.input_number.lr_amp_vol.state}}"
+
+        
+    #- service: remote.send_command
+    #  data:
+    #   entity_id: remote.harmonyhub
+    #   command:
+    #    - VolumeUp
+    #   device: 36148984
+    #   num_repeats: 5
+    #  delay_secs: 0.6 

@@ -1,0 +1,256 @@
+
+resources:
+  - url: /local/gauge-card.js?v=1
+    type: js
+
+
+title: Home
+# Exclude entities from "Unused entities" view
+excluded_entities:
+  #- weblink.router
+views:
+
+    # Specify a tab icon if you want the view tab to be an icon.
+  - icon: mdi:home-assistant
+    # Title of the view. Will be used as the tooltip for tab icon
+    title: Second view
+    cards:
+
+      - type: entity-filter
+        entities:
+          - device_tracker.chris_chris
+          
+        state_filter:
+          - 'home'
+        card:
+          type: glance
+          title: People that are home
+
+      - type: entity-filter
+        
+        entities:
+          - light.bathroom
+          - switch.bedroom_amp
+          - binary_sensor.sensor
+          - light.bedroom
+          - light.gateway_light_7811dcdeb2d6
+          - light.hall
+          - binary_sensor.hall_sensor
+          - light.hyperion
+          - light.kitchen
+          - sensor.kitchen_speaker_state
+          - light.living_room
+          - binary_sensor.sensor_2
+          - light.picture_lights
+          - device_tracker.ps3
+          - light.salt_lamp
+          - media_player.tv
+        state_filter:
+          - 'on'
+        card:
+          type: glance
+          title: These things are on          
+
+  - title: Floor plan
+    id: floorplan
+    panel: true
+    cards:
+      - type: picture-elements
+        image: /local/roughfloorplan.jpg
+        elements:
+    ##########     Bedroom     ############
+          - type: state-icon
+            tap_action: more-info
+            entity: light.bedroom
+            style:
+              top: 35%
+              left: 83%          
+          - type: state-icon
+            tap_action: more-info
+            entity: switch.bedroom_amp
+            style:
+              top: 50%
+              left: 82%
+          - type: state-icon
+            tap_action: more-info
+            entity: media_player.bedroom_speaker
+            style:
+              top: 50%
+              left: 84%
+          - type: state-icon
+            tap_action: more-info
+            entity: binary_sensor.sensor
+            style:
+              top: 19%
+              left: 96%
+          - type: state-icon
+            tap_action: more-info
+            entity: media_player.bedroom_home_mini
+            style:
+              top: 19%
+              left: 70%
+          - type: state-label
+            entity: sensor.aeotec_zw074_multisensor_gen5_temperature
+            style:
+              top: 15%
+              left: 83%
+              font-family: Arial
+              font-weight: bold
+          - type: state-icon
+            tap_action: more-info
+            entity: light.bedside_lights
+            style:
+              top: 19%
+              left: 75%
+    ##########     Hall     ############
+          - type: state-icon
+            tap_action: more-info
+            entity: light.hall
+            style:
+              top: 60%
+              left: 83%
+          - type: state-icon
+            tap_action: more-info
+            entity: light.gateway_light_7811dcdeb2d6
+            style:
+              top: 55%
+              left: 83%
+          - type: state-icon
+            tap_action: more-info
+            entity: binary_sensor.hall_sensor
+            style:
+              top: 55%
+              left: 70%
+          - type: state-label
+            entity: sensor.hall_temperature
+            style:
+              top: 69%
+              left: 83%
+              font-family: Arial
+              font-weight: bold
+          - type: state-icon
+            tap_action: more-info
+            entity: camera.nexus5
+            style:
+              top: 14%
+              left: 70% 
+    ##########     Living Room     ############
+          - type: state-icon
+            tap_action: more-info
+            entity: light.living_room
+            style:
+              top: 35%
+              left: 53%        
+          - type: state-icon
+            tap_action: more-info
+            entity: camera.living_room_camera
+            style:
+              top: 14%
+              left: 40% 
+          - type: state-icon
+            tap_action: more-info
+            entity: binary_sensor.sensor_2
+            style:
+              top: 19%
+              left: 40% 
+          - type: state-icon
+            tap_action: more-info
+            entity: media_player.tv
+            style:
+              top: 22%
+              left: 53%
+          - type: state-icon
+            tap_action: more-info
+            entity: light.hyperion
+            style:
+              top: 19%
+              left: 53%
+          - type: state-icon
+            tap_action: more-info
+            entity: media_player.living_room_speaker
+            style:
+              top: 19%
+              left: 42%
+          - type: state-icon
+            tap_action: more-info
+            entity: light.salt_lamp
+            style:
+              top: 51%
+              left: 60%
+          - type: state-icon
+            tap_action: more-info
+            entity: light.picture_lights
+            style:
+              top: 19%
+              left: 65%
+          - type: state-label
+            entity: sensor.aeotec_zw074_multisensor_gen5_temperature_2
+            style:
+              top: 15%
+              left: 53%
+              font-family: Arial
+              font-weight: bold
+    ##########     Kitchen     ############
+          - type: state-icon
+            tap_action: more-info
+            entity: light.kitchen
+            style:
+              top: 35%
+              left: 27%
+          - type: state-icon
+            tap_action: more-info
+            entity: media_player.kitchen_speaker
+            style:
+              top: 19%
+              left: 36%
+          - type: state-icon
+            tap_action: more-info
+            entity: switch.kitchen_amp
+            style:
+              top: 19%
+              left: 34%
+          - type: state-icon
+            tap_action: more-info
+            entity: binary_sensor.motion_sensor_158d0001d525ab
+            style:
+              top: 35%
+              left: 18%
+    ##########     Bathroom     ############
+          - type: state-icon
+            tap_action: more-info
+            entity: light.bathroom
+            style:
+              top: 35%
+              left: 9%
+        #  - type: image
+        #    entity: input_boolean.motion_sensors
+        #    tap_action: toggle
+        #    state_image:
+        #      'on': https://storage.googleapis.com/gd-wagtail-prod-assets/original_images/Jobs_Motion_Designer_Share.jpg
+        #      'off': https://michaelhyatt.com/wp-content/uploads/2012/07/iStock_000007706240Small.jpg
+        #    style:
+        #      top: 4%
+        #      left: 30%
+        #      width: 7%      
+   
+              
+              
+         # - type: state-label
+         #   
+         #   entity: sensor.hyperion_colour
+         #   style:
+         #     top: 5%
+         #     left: 5%
+         #     data_template:
+         #     border: 2px solid rgb(255, 191, 201)
+         #     border-radius: 10%
+         # - type: state-label
+         #   entity: sensor.hyperion_colour_str
+         #   style:
+         #     top: 10%
+         #     left: 5%
+         #     data_template:
+         #     border: 2px solid rgb states('states.sensor.hyperion_colour_str')
+         #     border-radius: 10%
+         # - type: service-button
+            

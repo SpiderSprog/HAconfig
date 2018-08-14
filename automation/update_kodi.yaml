@@ -1,0 +1,13 @@
+alias: "Auto Update Kodi"
+trigger:
+  - platform: zone
+    entity_id: device_tracker.chris_chris
+    zone: zone.home
+    event: enter  # or "leave"
+  - platform: time
+    at: '04:30:00'
+  - platform: time
+    at: '16:30:00'    
+action:
+   - service: script.turn_on
+     entity_id: script.update_kodi_library

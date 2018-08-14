@@ -1,0 +1,34 @@
+  alias: "Volume Slider z550 changed up"
+  initial_state: 'on'
+  condition:
+    - condition: template
+      value_template: '{% if states.input_number.lr_amp_vol.state | int - states.input_number.lr_amp_vol_prev.state | int >1 %}true{% else %}false{% endif %}'
+  trigger:
+    platform: state
+    entity_id: input_number.lr_amp_vol
+  action:
+
+    - service: logbook.log
+      data_template:
+        name: "Volume changed: "
+        message: "{{states.input_number.lr_amp_vol.state | int - states.input_number.lr_amp_vol_prev.state | int}}"
+        
+    - service: notify.pushbullet
+      data_template:
+        target: device/OnePlus3
+        title: vol changed by
+        message: "{{states.input_number.lr_amp_vol.state | int - states.input_number.lr_amp_vol_prev.state | int}}"
+
+    - service: remote.send_command
+      data_template:
+         entity_id: remote.harmonyhub
+         command:
+          - VolumeUp
+         device: 36148984
+         num_repeats: "{{ (states.input_number.lr_amp_vol.state | int - states.input_number.lr_amp_vol_prev.state | int) | int}}"
+         delay_secs: 0.4
+    - service: input_number.set_value
+      data_template:
+        entity_id: input_number.lr_amp_vol_prev
+        value: "{{ states.input_number.lr_amp_vol.state | int }}"
+   

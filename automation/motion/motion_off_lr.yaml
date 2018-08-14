@@ -1,0 +1,14 @@
+alias: PIR Living Room Off
+trigger:
+    platform: state
+    entity_id: binary_sensor.sensor
+    to: 'off'
+    for:
+      minutes: 10
+condition:
+  - condition: state
+    entity_id: input_boolean.motion_sensors
+    state: 'on' 
+action:
+    service: light.turn_off
+    entity_id: light.living_room

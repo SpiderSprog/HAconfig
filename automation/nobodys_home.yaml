@@ -1,0 +1,14 @@
+alias: "no ones home"
+trigger:
+  - platform: state
+    entity_id: group.anyone_home #sensor.anyone_home
+    to: 'not_home'
+   # for:
+    #  minutes: 10
+    
+action:
+
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.house_mode
+      option: Away

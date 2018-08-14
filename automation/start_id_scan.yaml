@@ -1,0 +1,12 @@
+alias: Activate Face Scan
+trigger:
+   platform: state
+   entity_id: sensor.wall_panel
+   to: 'True'
+
+action:
+   - delay:
+      seconds: 3
+   - service: image_processing.scan
+     data:
+       entity_id: image_processing.facebox_nexus5

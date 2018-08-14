@@ -1,0 +1,10 @@
+face_scan:
+  widget_type: iframe
+  img_list:
+    - http://192.168.1.12/facescan.gif
+  title: Scanning
+  refresh: 300
+  
+
+layout:
+  - face_scan(12x7)

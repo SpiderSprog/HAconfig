@@ -1,0 +1,38 @@
+alias: 'Announce Alarm on bedtime'
+hide_entity: True
+trigger:
+  platform: state
+  entity_id: input_select.house_mode
+  to: "Sleep"
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: input_boolean.wakeup
+      state: 'on'
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: input_boolean.wakeup_weekends
+          state: 'on'
+        - condition: time
+          weekday:
+            - mon
+            - tue
+            - wed
+            - thu
+            - sun #trigger snight before so wanna heere it on sunday nigth bdetime but not friday
+action:
+  - service: media_player.turn_on
+    entity_id:
+      - media_player.living_room_speaker
+      - media_player.bedroom_home_mini
+  - delay:
+      seconds: 2
+  - service: tts.google_say
+    entity_id:
+      - media_player.living_room_speaker
+      - media_player.bedroom_home_mini
+    data_template:
+      message: "You have an alarm set for {{states('sensor.wakeup_alarm_time')}}"
+        

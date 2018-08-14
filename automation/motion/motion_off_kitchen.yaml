@@ -1,0 +1,20 @@
+alias: PIR Kitchen Off
+trigger:
+   platform: state
+   entity_id: binary_sensor.motion_sensor_158d0001d525ab
+   to: 'off'
+   for:
+      minutes: 5
+condition:
+  - condition: state
+    entity_id: input_boolean.motion_sensors
+    state: 'on' 
+
+ 
+action:
+    service: light.turn_off
+    entity_id: 
+        - light.kitchen
+        #- light.hue_ambiance_spot_1 #make group?
+        #- light.hue_ambiance_spot_2
+        #- light.hue_ambiance_spot_3

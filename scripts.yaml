@@ -1,0 +1,16 @@
+motion_light_lr: !include scripts/motion_light_lr.yaml
+timer_lr: !include scripts/timer_lr.yaml
+red_alert: !include scripts/red_alert.yaml
+bedtime: !include scripts/bedtime.yaml
+imhome: !include scripts/imhome.yaml
+update_kodi_library: !include scripts/kodi_library_scan.yaml
+morning_alarm: !include scripts/morning_alarm.yaml
+bedside: !include scripts/bedside.yaml
+testnotify: !include scripts/testnotify.yaml
+away: !include scripts/away.yaml
+testtts: !include scripts/testtts.yaml
+welcome_chris: !include scripts/welcome_chris.yaml
+get_pvr_channels: !include scripts/kodi_get_pvr.yaml
+get_recent_episodes: !include scripts/kodi_get_eps.yaml
+get_recent_movies: !include scripts/kodi_get_mov.yaml
+ps3_off: !include scripts/ps3_off.yaml

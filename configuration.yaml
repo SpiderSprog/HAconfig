@@ -1,0 +1,207 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: 53.4167
+  longitude: -3
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 8
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/London
+  # Customization file
+  customize: !include customize.yaml
+  whitelist_external_dirs:
+    - /tmp
+# Show links to resources in log and frontend
+introduction:
+
+# Enables the frontend
+frontend:
+
+# Enables configuration UI
+config:
+
+http:
+  base_url: !secret http_url
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
+  api_password: !secret api_password
+
+mqtt:
+  broker: !secret mqtt_broker
+  port: !secret mqtt_port
+  client_id: HomeAssistant
+  keepalive: 60
+  username: HA
+  password: !secret mqtt_password
+
+device_tracker:
+  - platform: owntracks
+    max_gps_accuracy: 200
+  - platform: ping
+    hosts:
+      PS3: 192.168.1.23
+  - platform: nmap_tracker
+    hosts: 192.168.1.23
+ffmpeg:
+
+panel_iframe:
+  mdiindex:
+    title: MDI Icon Index
+    icon: mdi:vector-square
+    url: https://cdn.rawgit.com/james-fry/home-assistant-mdi/efd95d7a/home-assistant-mdi.html
+  rutorrent: 
+    title: rutorrent
+    icon: mdi:movie
+    url: !secret rutorrent
+
+
+notify:
+  - platform: pushbullet
+    name: pushbullet
+    api_key: !secret pushbullet_apikey
+    
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+# Enables a map showing the location of tracked devices
+map:
+
+# Track the sun
+sun:
+
+
+# Text to speech
+tts:
+  - platform: google
+    cache: true
+    language: 'en-uk' 
+    cache_dir: /tmp/tts
+    time_memory: 300
+
+# Cloud
+cloud:
+  google_actions:
+    filter:
+      include_entities:
+        - light.hyperion
+        - light.picture_lights
+        - light.salt_lamp
+        - light.gateway_light_7811dcdeb2d6
+        - light.bedside_lights
+        - switch.bedroom_amp
+        - switch.kitchen_amp
+        - light.picture_lights
+        - input_boolean.wakeup
+        - input_boolean.motion_sensors
+        - script.imhome
+        - script.red_alert
+        - script.bedtime
+        - script.update_kodi_library
+        - script.away
+        - script.bedtime
+        - input_boolean.wakeup
+     # include_domains:
+     #   - switch
+     # exclude_entities:
+     #   - switch.outside
+     # entity_config:
+     #  switch.kitchen:
+     #   name: Custom Name for Google Assistant
+     #   aliases:
+     #    - bright lights
+     #    - entry lights
+     #   room: living room
+     
+# zwave
+zwave:
+  usb_path: /dev/ttyUSB2
+  
+rfxtrx:
+  device: /dev/ttyUSB3
+  
+xiaomi_aqara:
+  discovery_retry: 10
+  gateways:
+    - mac: 7811dcdeb2d6
+      key: j1m7tz2amv2uvsk6
+      host: 192.168.1.22
+    
+
+media_player: !include media_player.yaml
+
+camera: !include camera.yaml
+
+android_ip_webcam:
+   - host: 192.168.1.18
+     name: Nexus5
+  
+image_processing:
+  - platform: facebox
+    endpoint: !secret facebox
+    confidence: 0.5
+    scan_interval: 1000
+    source:
+      - entity_id: camera.nexus5
+  - platform: facebox
+    endpoint: !secret facebox 
+    confidence: 0.5
+    scan_interval: 1000
+    source:
+      - entity_id: camera.local_file
+      
+
+remote:
+  - platform: harmony
+    name: harmonyhub
+    host: 192.168.1.5
+
+hue:
+  bridges:
+     host: 192.168.1.15
+
+spin_remote:
+  - platform: spin_sdc_1
+
+binary_sensor:
+  - platform: template
+    sensors:
+      hall_sensor:
+        friendly_name: 'Hall Sensor' 
+        #device_class: motion
+        value_template: "{{ is_state('sensor.hue_motion_sensor_motion_1', 'on') }}"
+
+input_text: !include input_text.yaml
+zone: !include zone.yaml
+sensor: !include sensors.yaml
+group: !include groups.yaml
+#automation: !include automations.yaml
+automation old: !include_dir_list automation/ #mi_cube/
+script: !include scripts.yaml
+input_select: !include input_select.yaml
+input_number: !include input_number.yaml
+switch: !include switches.yaml
+input_boolean: !include input_boolean.yaml
+light: !include lights.yaml
+rest_command: !include rest.yaml
+shell_command: !include shell_commands.yaml

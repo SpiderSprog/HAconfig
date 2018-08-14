@@ -1,0 +1,13 @@
+
+  
+  - platform: generic
+    name: Chris
+    still_image_url: https://maps.googleapis.com/maps/api/staticmap?center={{ states.device_tracker.chris_chris.attributes.latitude }},{{ states.device_tracker.chris_chris.attributes.longitude }}&zoom=13&size=500x500&maptype=roadmap&markers=color:blue%7Clabel:P%7C{{ states.device_tracker.chris_chris.attributes.latitude }},{{ states.device_tracker.chris_chris.attributes.longitude }}
+    limit_refetch_to_url_change: true
+  
+  #- platform: local_file
+  #  file_path: /config/camera/demo.jpg
+    
+  - platform: ffmpeg
+    input: rtsp://admin:tast33cam1@192.168.1.19/onvif1
+    name: Living Room Camera

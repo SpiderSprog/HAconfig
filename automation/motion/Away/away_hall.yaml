@@ -1,0 +1,35 @@
+alias: PIR Hall Away
+trigger:
+   platform: state
+   entity_id: binary_sensor.hall_sensor
+   to: 'on'
+condition:
+  - condition: state
+    entity_id: input_select.house_mode
+    state: 'Away'
+  - condition: state
+    entity_id: input_boolean.motion_sensors
+    state: 'on' 
+action:
+#   service: light.turn_on
+#   data:
+#     entity_id: light.hall
+#     brightness: 20
+  
+
+  #- service: xiaomi_aqara.play_ringtone
+  #  data:
+  #    gw_mac: 7811dcdeb2d6
+  #    ringtone_id: 0
+  #    ringtone_vol: 50
+  - service: light.turn_on
+    data:
+      entity_id: light.gateway_light_7811dcdeb2d6
+      color_name: "red" 
+
+  
+  #- service: notify.pushbullet
+  #  data_template:
+  #  target: device/OnePlus3
+  #  title: Test PushBullet
+  #  message: "Hall Motion Detected"

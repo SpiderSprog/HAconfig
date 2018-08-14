@@ -1,0 +1,14 @@
+#
+# Main arguments, all optional
+#
+title: Rosie
+widget_dimensions: [120, 120]
+widget_margins: [5, 5]
+columns: 8
+
+label:
+    widget_type: label
+    text: Hi Rosie!
+    
+layout:
+    - label(8x1)

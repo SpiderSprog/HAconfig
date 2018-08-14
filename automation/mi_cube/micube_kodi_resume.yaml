@@ -1,0 +1,15 @@
+  alias: "MiCube flip90 resume LR"
+  initial_state: 'on'
+  condition:
+    - condition: state
+      entity_id: media_player.kodi
+      state: 'paused'
+  trigger:
+    platform: event
+    event_type: cube_action
+    event_data:
+      entity_id: binary_sensor.cube_158d0001108283
+      action_type: flip90
+  action:
+    - service: media_player.media_play
+      entity_id: media_player.kodi

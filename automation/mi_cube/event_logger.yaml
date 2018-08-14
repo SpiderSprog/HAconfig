@@ -1,0 +1,18 @@
+  alias: MiCube event test
+  initial_state: 'off'
+  trigger:
+    platform: event
+    event_type: cube_action
+    event_data:
+      entity_id: binary_sensor.cube_158d0001108283
+  action:
+    - service: logbook.log
+      data_template:
+        name: "MiCube event: "
+        message: >
+          {%- if trigger.event.data.action_value -%}
+            {{trigger.event.data.action_type}} and {{trigger.event.data.action_value}}
+          {%- else -%}
+            {{trigger.event.data.action_type}}
+          {%- endif -%}
+        

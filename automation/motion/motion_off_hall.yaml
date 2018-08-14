@@ -1,0 +1,16 @@
+alias: PIR Hall Off
+trigger:
+    platform: state
+    entity_id: binary_sensor.hall
+    to: 'off'
+    for:
+      minutes: 5
+condition:
+  - condition: state
+    entity_id: input_boolean.motion_sensors
+    state: 'on' 
+action:
+    service: light.turn_off
+    entity_id: 
+        - light.hall
+        - light.gateway_light_7811dcdeb2d6

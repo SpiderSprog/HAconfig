@@ -1,0 +1,51 @@
+sequence:
+
+    - service: light.turn_on
+      data:
+        entity_id: 
+          - light.bedroom
+          #- light.living_room
+        brightness: 255
+        transition: "{{ states('input_number.wakeup_duration')|int *60 }}"
+        
+    - delay: "00:{{ states('input_number.wakeup_duration')|int }}:00"
+        
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.bedroom_speaker
+        volume_level: "0.09"
+      
+    - service: media_player.play_media
+      entity_id: media_player.bedroom_speaker
+      data:
+        media_content_id: http://192.168.1.12/HAaudio/wakeup/early-sunrise.mp3
+        media_content_type: audio/mp3
+    
+    - delay:
+        seconds: 10
+    
+    - service: media_player.volume_set
+      data:
+       entity_id: media_player.bedroom_speaker
+       volume_level: "0.27"
+    
+    - delay:
+        seconds: 10
+    
+    - service: media_player.volume_set
+      data:
+       entity_id: media_player.bedroom_speaker
+       volume_level: "0.36"
+    
+    - delay:
+        seconds: 10
+    
+    - service: media_player.volume_set
+      data:
+       entity_id: media_player.bedroom_speaker
+       volume_level: "0.45"
+       
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.house_mode
+        option: "Home"

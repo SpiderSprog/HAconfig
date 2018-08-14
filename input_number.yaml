@@ -1,0 +1,66 @@
+  wakeup_hour:
+    name: Hour
+    icon: mdi:clock-in
+    initial: 5
+    min: 0
+    max: 23
+    step: 1
+
+  wakeup_minutes:
+    name: Minutes
+    icon: mdi:clock-in
+    initial: 30
+    min: 0
+    max: 55
+    step: 5
+    
+  wakeup_duration:
+    name: Light fade-in duration
+    icon: mdi:clock-in
+    initial: 15
+    min: 5
+    max: 60
+    step: 5
+    
+  gym_days_chris:
+    name: Chris Gym Days
+    initial: 0
+    min: 0
+    max: 7
+    step: 1
+    mode: box
+
+  lr_amp_vol:
+    name: Living Room Amp Volume
+    min: 0
+    max: 40
+    step: 1
+    
+  lr_amp_vol_prev:
+    name: Living Room Amp Prev Volume
+    min: 0
+    max: 40
+    step: 1
+    
+  rgb_r:
+    name: Red Level
+    min: 0
+    max: 255
+    step: 1
+    
+  rgb_b:
+    name: Blue Level
+    min: 0
+    max: 255
+    
+  rgb_g:
+    name: Green Level
+    min: 0
+    max: 255
+    step: 1
+    
+  rgb_bright:
+    name: Nrightness Level
+    min: 0
+    max: 155
+    step: 1

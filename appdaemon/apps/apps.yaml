@@ -1,0 +1,7 @@
+hello_world:
+  module: hello
+  class: HelloWorld
+
+kodi select:
+  module: kodi_get
+  class: DynamicKodiInputSelect

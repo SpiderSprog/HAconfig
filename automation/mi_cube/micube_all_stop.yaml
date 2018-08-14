@@ -1,0 +1,20 @@
+  alias: "MiCube shake stop all"
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: cube_action
+    event_data:
+      entity_id: binary_sensor.cube_158d0001108283
+      action_type: shake_air
+  action:
+    - service: media_player.media_stop
+      entity_id: group.media_players
+    - service: media_player.media_stop
+      entity_id: media_player.living_room_tv
+    - service: remote.send_command
+      data:
+       entity_id: remote.harmonyhub
+       command:
+       - PowerOff
+       device: 38592245
+       delay_secs: 0.6

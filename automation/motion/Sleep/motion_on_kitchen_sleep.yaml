@@ -1,0 +1,21 @@
+alias: PIR Kitchen On Sleep
+trigger:
+   platform: state
+   entity_id: binary_sensor.motion_sensor_158d0001d525ab
+   to: 'on'
+condition:
+  - condition: state
+    entity_id: input_boolean.motion_sensors
+    state: 'on' 
+  - condition: state
+    entity_id: input_select.house_mode
+    state: 'Sleep'
+
+ 
+action:
+   service: light.turn_on
+   data:
+     entity_id: 
+        - light.kitchen
+#     brightness: 15
+#     rgb_color: [255,153,102]

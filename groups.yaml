@@ -1,0 +1,192 @@
+#Views
+   preferences_view:
+    view: yes
+    name: User Preferences
+    entities:
+     - group.chris_prefs
+     - group.chris_wakeuplight
+     - sensor.gym_days_chris
+
+   rooms_view:
+    view: yes
+    name: Rooms
+    entities:
+     - group.hall
+     - group.bedroom
+     - group.spare_room
+     - group.living_room
+     - group.kitchen
+     - group.bathroom
+
+   media_players:
+    view: yes
+    name: Media Players
+    entities:
+     - media_player.all
+     - media_player.bedroom_home_mini
+     - media_player.bedroom_speaker
+     - media_player.kitchen_speaker
+     - media_player.kodi
+     - media_player.living_room_speaker
+     - media_player.living_room_tv
+
+     
+#Rooms     
+
+   all:
+    name: All
+    entities:
+      - input_select.house_mode
+      - input_boolean.motion_sensors
+      - sensor.hyperion_colour
+
+      
+   hall:
+    name: Hall
+    entities:
+      - light.hall
+      - sensor.hall_light_level
+      - binary_sensor.hall_sensor
+      - sensor.hall_temperature
+      - sensor.wall_panel
+      - switch.wall_panel
+      - light.gateway_light_7811dcdeb2d6
+
+
+   bedroom:
+    name: Bedroom
+    entities:
+      - light.bedroom
+      - light.bedside_lights
+      - light.bedside_lamps
+      - switch.bedroom_amp
+      - sensor.bedroom_speaker_state
+      - sensor.bedroom_home_mini_state
+      - binary_sensor.sensor
+      - sensor.aeotec_zw074_multisensor_gen5_temperature
+      - sensor.aeotec_zw074_multisensor_gen5_relative_humidity
+      - sensor.luminance
+      
+   living_room:
+    name: Living Room
+    entities:
+      - input_select.living_room_mode
+      - light.living_room
+      - light.salt_lamp
+      - light.hyperion
+      - light.picture_lights
+      - sensor.kodi_state
+      - sensor.chromecast_vid_state 
+      - sensor.living_room_speaker_state 
+      - binary_sensor.sensor_2
+      - sensor.aeotec_zw074_multisensor_gen5_temperature_2
+      - sensor.aeotec_zw074_multisensor_gen5_relative_humidity_2
+      - sensor.aeotec_zw074_multisensor_gen5_luminance
+      - binary_sensor.cube_158d0001108283
+      - device_tracker.ps3
+      
+   kitchen:
+    name: Kitchen
+    entities:
+      - sensor.kitchen_speaker_state
+      - switch.kitchen_amp
+      - light.hue_ambiance_spot_1
+      - light.hue_ambiance_spot_2
+      - light.hue_ambiance_spot_3
+      - binary_sensor.motion_sensor_158d0001d525ab
+
+   bathroom:
+    name: Bathroom
+    entities:
+      - input_number.test #placeholder so card shows, room currently has no entities
+      - light.hue_ambiance_spot_1_2
+      - light.hue_ambiance_spot_2_2
+      - binary_sensor.switch_158d000201afea
+      
+   spare_room:
+    name: Spare Room
+    entities:
+      - input_number.test #placeholder so card shows, room currently has no entities
+      
+#other groups
+
+   anyone_home:
+    name: Anyone Home?
+    control: hidden
+    entities:
+      - device_tracker.chris_chris
+
+   wakeuplight:
+    name: Wakeup light
+    control: hidden
+    entities:
+      - sensor.wakeup_alarm_time
+      - sensor.wakeup_start_time_lights
+      - sensor.wakeup_fadein_duration
+      - input_number.wakeup_hour
+      - input_number.wakeup_minutes
+      - input_number.wakeup_duration
+      - input_boolean.wakeup
+      - input_boolean.wakeup_weekends
+      
+   crypto:
+    name: Crypto
+    control: hidden
+    entities:
+      - sensor.bitcoin
+      - sensor.bitcoin_balance
+      - sensor.trade_volume
+      - sensor.exchange_rate_1_btc
+      
+   chris_prefs:
+    #view: yes
+    name: Chris Preferences
+    control: hidden
+    entities:
+      - sensor.gym_days_chris
+      - input_number.gym_days_chris
+      - input_number.test
+       
+
+   facial_recog:
+     view: yes
+     name: Facial Recognition
+     entities:
+       - camera.local_file
+       - camera.beatles
+       - image_processing.facebox_beatles
+
+       
+   qnap_nas:
+     name: QNAP NAS
+     entities:
+       - sensor.nase8c8c7_cpu_usage
+       - sensor.nase8c8c7_free_space_datavol1
+       - sensor.nase8c8c7_free_space_datavol2
+       - sensor.nase8c8c7_memory_available
+       - sensor.nase8c8c7_memory_used
+       - sensor.nase8c8c7_memory_usage
+       - sensor.nase8c8c7_network_down_eth0
+       - sensor.nase8c8c7_network_down_eth1
+       - sensor.nase8c8c7_network_link_eth0
+       - sensor.nase8c8c7_network_link_eth1
+       - sensor.nase8c8c7_network_up_eth0
+       - sensor.nase8c8c7_network_up_eth1
+       - sensor.nase8c8c7_smart_status_drive_01
+       - sensor.nase8c8c7_smart_status_drive_02
+       - sensor.nase8c8c7_smart_status_drive_03
+       - sensor.nase8c8c7_status
+       - sensor.nase8c8c7_used_space_datavol1
+       - sensor.nase8c8c7_used_space_datavol2
+       - sensor.nase8c8c7_volume_used_datavol1
+       - sensor.nase8c8c7_volume_used_datavol1_2
+       - sensor.nase8c8c7_volume_used_datavol2
+       - sensor.nase8c8c7_volume_used_datavol2_2
+   
+   Media Select:
+     control: hidden
+     entities:
+       - input_select.kodi_results
+       - script.get_recent_movies
+       - script.get_recent_episodes
+       - script.get_pvr_channels

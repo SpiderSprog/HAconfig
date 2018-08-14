@@ -1,0 +1,8 @@
+sequence:
+     - service: remote.send_command
+       data:
+        entity_id: remote.harmonyhub
+        command:
+         - PowerOff
+        device: 36148987
+        delay_secs: 0.6 

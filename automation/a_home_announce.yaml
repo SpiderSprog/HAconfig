@@ -1,0 +1,66 @@
+  alias: "Home Announce"
+  initial_state: True
+  hide_entity: False
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.hall_sensor
+      to: "on"
+  condition:
+    condition: and
+    conditions:
+  ############Only fire if Home Assistant has been up for > 5 minutes
+      - condition: template
+        value_template: "{% if as_timestamp(now()) - as_timestamp(states.input_boolean.ha_uptime.last_changed) > 301%}true{% else %}false{% endif %}"
+  ############Only fire if it has been >5 minutes since  last annoucement
+      - condition: template
+        value_template: "{% if as_timestamp(now()) - as_timestamp(states.automation.home_announce.last_updated) > 301%}true{% else %}false{% endif %}"
+  ############Only fire if either of us have been home for < 5 minutes
+      - condition: or
+        conditions:
+        - condition: template
+          value_template: '{% if as_timestamp(now()) - as_timestamp(states.device_tracker.chris_chris.last_changed) < 300 and states.device_tracker.chris_chris.state == "home" %}true{% else %}false{% endif %}'
+        - condition: template
+          value_template: '{% if as_timestamp(now()) - as_timestamp(states.device_tracker.rosie_rosie.last_changed) < 300 and states.device_tracker.rosie_rosie.state == "home" %}true{% else %}false{% endif %}'
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.house_mode
+        option: Home
+        
+    - service: media_player.turn_on
+      entity_id:
+        - media_player.living_room_speaker
+        - media_player.bedroom_home_mini
+    - delay:
+        seconds: 5
+    - service: tts.google_say
+      entity_id:
+        - media_player.living_room_speaker
+        - media_player.bedroom_home_mini
+      data_template:
+        message: >
+          {% if as_timestamp(now()) - as_timestamp(states.device_tracker.chris_chris.last_changed) < 300 and as_timestamp(now()) - as_timestamp(states.device_tracker.rosie_rosie.last_changed) < 300%}
+          Welcome home Chris and Rosie!
+          {% elif as_timestamp(now()) - as_timestamp(states.device_tracker.chris_chris.last_changed) < 300%}
+          Welcome home Chris!
+          {% elif as_timestamp(now()) - as_timestamp(states.device_tracker.rosie_rosie.last_changed) < 300%}
+          Welcome home Rosie!
+          {% else %}
+          This automation is confused! 
+          {% endif %}
+    - service: notify.pushbullet
+      data_template:
+        target: device/OnePlus3
+        title: Test PushBullet
+        message: >
+          {% if as_timestamp(now()) - as_timestamp(states.device_tracker.chris_chris.last_changed) < 300 and as_timestamp(now()) - as_timestamp(states.device_tracker.rosie_rosie.last_changed) < 300%}
+          Welcome home Chris and Rosie!
+          {% elif as_timestamp(now()) - as_timestamp(states.device_tracker.chris_chris.last_changed) < 300%}
+          Welcome home Chris!
+          {% elif as_timestamp(now()) - as_timestamp(states.device_tracker.rosie_rosie.last_changed) < 300%}
+          Welcome home Rosie!
+          {% else %}
+          This automation is confused! 
+          {% endif %}
+       
+   

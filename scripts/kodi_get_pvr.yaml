@@ -1,0 +1,7 @@
+    alias: TV Channels
+    sequence:
+      - service: media_player.kodi_call_method
+        data:
+          entity_id: media_player.kodi
+          method: PVR.GetChannels
+          channelgroupid: 1

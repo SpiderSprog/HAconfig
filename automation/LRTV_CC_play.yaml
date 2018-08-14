@@ -1,0 +1,38 @@
+alias: "CC TV Media  Started"
+trigger:
+  - platform: state
+    entity_id: media_player.living_room_tv
+    to: 'playing'
+    
+action:
+   - service: remote.send_command
+     data:
+      entity_id: remote.harmonyhub
+      command:
+       - PowerOn
+      device: 36148984
+      delay_secs: 0.6 
+   - service: remote.send_command
+     data:
+      entity_id: remote.harmonyhub
+      command:
+       - InputA2
+      device: 36149413
+      delay_secs: 0.6 
+   - service: remote.send_command
+     data:
+      entity_id: remote.harmonyhub
+      command:
+       - InputB2
+      device: 36149413
+      delay_secs: 0.6
+   - delay: #time to turn on tv first
+      seconds: 7
+   - service: remote.send_command
+     data:
+      entity_id: remote.harmonyhub
+      command:
+       - InputHdmi2
+      device: 36148984
+      delay_secs: 0.6 
+

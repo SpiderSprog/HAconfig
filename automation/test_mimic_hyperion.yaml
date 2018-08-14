@@ -1,0 +1,38 @@
+alias: TestColourVar
+trigger:
+      - platform: state
+        entity_id: input_text.lr_rgb #input_number.rgb_r
+      #- platform: state
+      #  entity_id: input_number.rgb_g
+      #- platform: state
+      #  entity_id: input_number.rgb_b
+      #- platform: state
+      #  entity_id: input_number.rgb_bright
+action:
+   - service: light.turn_on
+     data_template:
+       entity_id: light.living_room
+       rgb_color: ['{{ states.input_text.lr_rgb.state }}']
+       brightness: '{{ states.input_number.rgb_bright.state | int }}'
+       #rgb_color: ['{{ states.input_number.rgb_r.state | int }}','{{ states.input_number.rgb_g.state | int }}','{{ states.input_number.rgb_b.state | int }}']
+       #brightness: '{{ states.input_number.rgb_bright.state | int }}'
+       
+  # - service: light.turn_on
+  #   data_template:
+  #     entity_id: light.hyperion
+  #     rgb_color: ['{{ states.input_number.rgb_r.state | int }}','{{ states.input_number.rgb_g.state | int }}','{{ states.input_number.rgb_b.state | int }}']
+  #     brightness: '{{ states.input_number.rgb_bright.state | int }}'
+#action:
+ #  service: light.turn_on
+ #  data_template:
+ #    entity_id: light.living_room
+ #   # brightness: 155
+ #    rgb_color: {{ attribute('light.hyperion') }}  #[255,153,102]
+
+     
+       # entity_id: switch.{{ states('input_select.is') }}
+       
+       
+      # rgb_color: [ "{{ colors.split(',')[0]|int }}", "{{ colors.split(',')[1]|int }}", "{{ colors.split(',')[2]|int }}" ]
+      #  brightness: "{{ brightness }}"
+      #  transition: "{{ transition }}"

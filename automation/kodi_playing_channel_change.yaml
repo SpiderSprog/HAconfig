@@ -1,0 +1,42 @@
+alias: "Kodi Playing"
+trigger:
+  - platform: state
+    entity_id: media_player.kodi
+    to: 'playing'
+    
+action:
+
+   - service: remote.send_command
+     data:
+      entity_id: remote.harmonyhub
+      command:
+       - PowerOn
+      device: 36148984
+      delay_secs: 0.6 
+   - service: remote.send_command
+     data:
+      entity_id: remote.harmonyhub
+      command:
+       - InputA1
+      device: 36149413
+      delay_secs: 0.6 
+   - service: remote.send_command
+     data:
+      entity_id: remote.harmonyhub
+      command:
+       - InputB1
+      device: 36149413
+      delay_secs: 0.6
+   - delay: #time to turn on tv first
+      seconds: 7
+   - service: remote.send_command
+     data:
+      entity_id: remote.harmonyhub
+      command:
+       - InputHdmi2
+      device: 36148984
+      delay_secs: 0.6 
+   - delay: #time to turn on tv first
+      seconds: 2
+
+      

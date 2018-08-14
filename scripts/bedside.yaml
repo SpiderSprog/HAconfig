@@ -1,0 +1,7 @@
+    alias: Test Bedside Dim
+    sequence:
+
+    - service: light.turn_on
+      data:
+        entity_id: light.bedside_lights
+        brightness: 20

@@ -1,0 +1,224 @@
+Activities
+  21871460 - Watch TV
+  29026667 - Kodi ch
+  29088454 - Chromecast ch
+  21871360 - Chromecast
+  21870167 - Red
+  24456707 - Pic off
+  -1 - PowerOff
+  21871679 - PS3
+  21870002 - Orange
+  29097694 - Poweroff
+  21871811 - Kodi
+
+Device Commands
+  38598385 - Custom Commads
+    LightOff
+    LightOn
+    Lof
+  36148987 - Sony PS3
+    PowerOff
+    PowerOn
+    -/--
+    .
+    0
+    1
+    2
+    3
+    4
+    5
+    6
+    7
+    8
+    9
+    ChannelDown
+    ChannelUp
+    DirectionDown
+    DirectionLeft
+    DirectionRight
+    DirectionUp
+    Enter
+    Stop
+    Play
+    ScanPrev
+    Eject
+    Pause
+    ScanNext
+    Prev
+    Next
+    Return
+    TopMenu
+    Popup/Menu
+    Subtitle
+    Audio
+    Angle
+    Cross
+    Circle
+    Square
+    Triangle
+    Green
+    Red
+    Blue
+    Yellow
+    Display
+    InstantLeft
+    InstantRight
+    L1
+    L2
+    L3
+    PS
+    PSHold
+    R1
+    R2
+    R3
+    Select
+    SlowNext
+    SlowPrev
+    Start
+    Time
+  38595213 - HDMI switch B
+    Audio
+    InputA1
+    InputA2
+    InputA3
+    InputA4
+    InputB1
+    InputB2
+    InputB3
+    InputB4
+  36149054 - Logitech Amp
+    PowerToggle
+    Mute
+    VolumeDown
+    VolumeUp
+    Settings
+    CenterDown
+    CenterUp
+    InputAnalogDirect
+    InputAnalogStereo1
+    InputAnalogStereo2
+    InputAnalogStereo3
+    InputDigitalCoax
+    InputDigitalOptical
+    InputDigitalOptical1
+    InputDigitalOptical2
+    InputNext
+    SubDown
+    SubUp
+    SurroundDown
+    SurroundUp
+    Test
+    ToggleFX
+  38592245 - PicLights
+    PowerOff
+    PowerOn
+    Bright
+    Dim
+    Fade
+    Flash
+    Light1
+    Light10
+    Light11
+    Light12
+    Light13
+    Light14
+    Light15
+    Light16
+    Light2
+    Light3
+    Light4
+    Light5
+    Light6
+    Light7
+    Light8
+    Light9
+    Off
+    OffPower
+    Op
+    Smooth
+    Strobe
+  36149413 - HDMI Switch A
+    Audio
+    InputA1
+    InputA2
+    InputA3
+    InputA4
+    InputB1
+    InputB2
+    InputB3
+    InputB4
+  36148985 - Google Chromecast
+  36148984 - Samsung TV
+    PowerOff
+    PowerOn
+    PowerToggle
+    -
+    0
+    1
+    2
+    3
+    4
+    5
+    6
+    7
+    8
+    9
+    Mute
+    VolumeDown
+    VolumeUp
+    ChannelPrev
+    ChannelDown
+    ChannelUp
+    DirectionDown
+    DirectionLeft
+    DirectionRight
+    DirectionUp
+    Select
+    Stop
+    Play
+    Rewind
+    Pause
+    FastForward
+    Record
+    Return
+    Menu
+    Subtitle
+    TTX/Mix
+    TeletextSize
+    C
+    B
+    D
+    A
+    Pip 
+    Sleep 
+    Green
+    Red
+    Blue
+    Yellow
+    Guide
+    Info
+    Exit
+    3D
+    AD
+    ChannelList
+    EManual
+    InputAv1
+    InputComponent
+    InputExt
+    InputHdmi1
+    InputHdmi2
+    InputHdmi3
+    InputHdmi4
+    InputTv
+    SmartHub
+    Source
+    TeletextCancel
+    TeletextHold
+    TeletextIndex
+    TeletextMode
+    TeletextNextPage
+    TeletextPreviousPage
+    TeletextReveal
+    TeletextStore
+    TeletextSubPage
+    Tools

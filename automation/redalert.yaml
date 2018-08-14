@@ -1,0 +1,24 @@
+  alias: For Fun Selector
+  trigger:
+    platform: state
+    entity_id: input_select.just_for_fun 
+  action:
+      #payload: "{{ states('input_select.just_for_fun') }}"
+
+    - service: media_player.turn_on
+      entity_id: media_player.living_room_speaker
+    - delay:
+        seconds: 10
+    - service: media_player.play_media
+      entity_id: media_player.living_room_speaker
+      data:
+        media_content_id: http://192.168.1.12/HAaudio/tng_red_alert2.mp3
+        media_content_type: audio/mp3
+
+
+    - service: light.turn_on
+      data:
+        entity_id: light.living_room
+        brightness: 155
+        rgb_color: [255,0,0]
+        flash: long

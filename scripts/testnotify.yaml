@@ -1,0 +1,39 @@
+sequence:
+  - service: notify.pushbullet
+    data:
+      target: device/OnePlus3
+      title: Test PushBullet
+      message: "{{ states('input_number.wakeup_duration')|int *60 }}"
+      #"{{ states('input_number.wakeup_duration')|int *60 }}"
+
+
+ 
+#{% if as_timestamp(now()) - as_timestamp(states.device_tracker.chris_chris.last_changed) > 300 and as_timestamp(now()) - as_timestamp(states.device_tracker.rosie_rosie.last_changed) > 300%}
+#            Welcome home Chris and Rosie!
+#    value_template: '{% if as_timestamp(now()) - as_timestamp(states.device_tracker.chris_chris.last_changed) < 300 and states.device_tracker.chris_chris.state == "home" %}true{% else %}false{% endif %}'
+#
+#   # data:
+#      url: google.com
+#
+ #- service: notify.notify
+ #     data_template:
+ #       message: "kitchen light is turned {{ trigger.event.data.state }}"
+# 
+  #message: >
+#      #   '{% if as_timestamp(now()) - as_timestamp(states.device_tracker.chris_chris.last_changed) > 300 and states.device_tracker.chris_chris.state == "home" %}true{% else %}false{% endif %}'
+#          
+ #{% if as_timestamp(now()) - as_timestamp(states.device_tracker.chris_chris.last_changed) < 300 and as_timestamp(now()) - as_timestamp(states.device_tracker.rosie_rosie.last_changed) < 300%}
+ #        Welcome home Chris and Rosie!
+ #        {% elif as_timestamp(now()) - as_timestamp(states.device_tracker.chris_chris.last_changed) > 300%}
+ #        Welcome home Chris!
+ #        {% elif as_timestamp(now()) - as_timestamp(states.device_tracker.rosie_rosie.last_changed) < 300%}
+ #        Welcome home Rosie!
+ #        {% else %}
+ #        This automation is confused! 
+ #        {% endif %}
+  - service: notify.pushbullet
+    data_template:
+      target: device/OnePlus3
+      title: Test PushBullet
+      message: "{{ states.group.anyone_home.state }}"
+  

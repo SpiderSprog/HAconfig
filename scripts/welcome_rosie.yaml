@@ -1,0 +1,11 @@
+sequence:
+    - service: switch.turn_on
+      data:
+        entity_id: switch.wall_panel_welcome_rosie
+    - service: switch.turn_on
+      data:
+        entity_id: switch.wall_panel_dash_rosie
+    - service: switch.turn_on
+      data:
+        entity_id: switch.wall_panel
+

@@ -1,0 +1,22 @@
+alias: PIR Living Room Sleep On
+trigger:
+   platform: state
+   entity_id: binary_sensor.sensor_2
+   to: 'on'
+condition:
+  - condition: state
+    entity_id: input_select.house_mode
+    state: 'Sleep'
+  - condition: state
+    entity_id: input_select.living_room_mode
+    state: 'Idle'
+  - condition: state
+    entity_id: input_boolean.motion_sensors
+    state: 'on' 
+    
+action:
+   service: light.turn_on
+   data:
+     entity_id: light.living_room
+     #brightness: 50
+     #rgb_color: [255,0,0]

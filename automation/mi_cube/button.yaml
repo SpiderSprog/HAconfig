@@ -1,0 +1,19 @@
+  alias: "MiButton Press EVent"
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: click
+    event_data:
+      entity_id: binary_sensor.switch_158d000201afea
+  action:
+    - service: logbook.log
+      data_template:
+        name: "Mibutoon event: "
+        message: >
+            {{trigger.event.data.action_type}}
+
+    #- service: notify.pushbullet
+    #  data_template:
+    #    target: device/OnePlus3
+    #    title: Test PushBullet
+    #    message: "{{trigger.event.data.click_type}}"

@@ -1,0 +1,43 @@
+alias: "PS3 On"
+trigger:
+  platform: state
+  entity_id: device_tracker.ps3
+  to: "home"
+    
+action:
+
+   - service: remote.send_command
+     data:
+      entity_id: remote.harmonyhub
+      command:
+       - PowerOn
+      device: 36148984
+      delay_secs: 0.6 
+   - delay: #time to turn on tv first
+      seconds: 2
+   - service: remote.send_command
+     data:
+      entity_id: remote.harmonyhub
+      command:
+       - InputA3
+      device: 36149413
+      delay_secs: 0.6 
+   - delay: #time to turn on tv first
+      seconds: 7
+   - service: remote.send_command
+     data:
+      entity_id: remote.harmonyhub
+      command:
+       - InputHdmi2
+      device: 36148984
+      delay_secs: 0.6 
+   - delay: #time to turn on tv first
+      seconds: 2
+   - service: remote.send_command
+     data:
+      entity_id: remote.harmonyhub
+      command:
+       - InputB3
+      device: 36149413
+      delay_secs: 0.6
+      

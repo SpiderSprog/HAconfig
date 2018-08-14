@@ -1,0 +1,12 @@
+  alias: "Identify Person In front of Wall Panel"
+  initial_state: True
+  hide_entity: False
+  trigger:
+    - platform: state
+      entity_id: image_processing.facebox_nexus5
+      to: "Chris Allport"
+  action:
+    service: switch.turn_on
+    entity_id: 
+      - switch.wall_panel
+      - switch.wall_panel_chris_dash

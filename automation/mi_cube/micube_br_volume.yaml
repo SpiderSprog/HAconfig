@@ -1,0 +1,29 @@
+#for kitchen and bedroom cc mayeb but in condition of tv media not playing?
+  alias: "MiCube rotate - Volume br CC"
+  initial_state: 'on'
+  condition:
+    - condition: state
+      entity_id: media_player.bedroom_speaker
+      state: 'playing'
+  trigger:
+    platform: event
+    event_type: cube_action
+    event_data:
+      entity_id: binary_sensor.cube_158d0001108283
+      action_type: rotate
+  action:
+    - service: media_player.volume_set
+      data_template:
+        entity_id: media_player.bedroom_speaker
+        volume_level: >
+              {% set state = (states.media_player.bedroom_speaker.attributes.volume_level + (trigger.event.data.action_value|int)/90)|round(2) -%}
+              {%-  if state > 1 -%}
+                 {%- set state  = 1 -%}
+              {%-  elif state < 0 -%}
+                 {%- set state  = 0 -%}
+              {%- endif %}
+              {{ state }}
+  #  - service: logbook.log
+  #    data_template:
+  #      name: "Volume changed: "
+  #      message: "{{ (states.media_player.bedroom_speaker.attributes.volume_level + (trigger.event.data.action_value|int)/90)|round(2) }}"

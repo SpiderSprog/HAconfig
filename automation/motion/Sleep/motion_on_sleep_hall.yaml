@@ -1,0 +1,22 @@
+alias: PIR Hall Sleep On
+trigger:
+   platform: state
+   entity_id: binary_sensor.hall_sensor
+   to: 'on'
+condition:
+  - condition: state
+    entity_id: input_select.house_mode
+    state: 'Sleep'
+  - condition: state
+    entity_id: input_boolean.motion_sensors
+    state: 'on' 
+action:
+#   service: light.turn_on
+#   data:
+#     entity_id: light.hall
+#     brightness: 20
+   service: light.turn_on
+   data:
+     entity_id: light.gateway_light_7811dcdeb2d6
+     brightness: 50
+     color_name: "red"  

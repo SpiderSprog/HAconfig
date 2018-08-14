@@ -1,0 +1,41 @@
+alias: "Media Start Lights off"
+trigger:
+  - platform: state
+    entity_id: input_select.living_room_mode
+    to: 'Watching Media'
+    
+action:
+    - service: light.turn_on
+      data:
+       entity_id: light.salt_lamp
+       transition: 5
+    - service: light.turn_off
+      entity_id: light.living_room
+    - service: remote.send_command
+      data:
+       entity_id: remote.harmonyhub
+       command:
+        - PowerOn
+       device: 36148984
+       delay_secs: 0.6
+    - service: remote.send_command
+      data:
+       entity_id: remote.harmonyhub
+       command:
+        - PowerOn
+       device: 38592245
+       delay_secs: 0.6
+    - service: remote.send_command
+      data:
+       entity_id: remote.harmonyhub
+       command:
+        - Light3
+       device: 38592245
+       delay_secs: 0.6
+    - delay: #time to change HDMI channel on switcher (hnadled in autoamtion for specifc source)
+       seconds: 7
+    - service: light.turn_on
+      data:
+       entity_id: light.hyperion
+       effect: HDMI
+       
